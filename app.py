@@ -2,9 +2,9 @@
 import os
 from flask import Flask, request, render_template
 from flask_cors import CORS, cross_origin
-from PIL import Image
 from src.context.pipeline import inference_pipeline
-# from vertexai.generative_models import GenerativeModel, Image
+from src.context.utils import common
+
 
 os.putenv('LANG', 'en_US.UTF-8')
 os.putenv('LC_ALL', 'en_US.UTF-8')
@@ -43,10 +43,10 @@ def train_route():
 def predict_route():
     """Callbacks for the predict button."""
     image = request.json['image']
-    # common.decode_image(Image.open(image), clApp.filename)
-    clApp.filename = Image.open(image)
+    common.decode_image(image, clApp.filename)
     result = clApp.classifier.predict()
     return [result]
+
 
 if __name__ == "__main__":
     clApp = ClientApp()

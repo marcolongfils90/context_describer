@@ -1,5 +1,6 @@
 """Module containing the inference pipeline."""
 import google.generativeai as genai
+from PIL import Image
 
 model = genai.GenerativeModel('gemini-pro-vision')
 
@@ -10,13 +11,12 @@ DESCRIBE_SYSTEM_PROMPT = '''
     '''
 
 
-def describe_image(base64_image):
+def describe_image(image):
     """Calls the OpenAI API and return the results."""
-    response = model.generate_content([
-        DESCRIBE_SYSTEM_PROMPT,
-        base64_image],
-        stream=True)
+    pil_image = Image.open(image)
+    response = model.generate_content([DESCRIBE_SYSTEM_PROMPT, pil_image], stream=True)
     response.resolve()
+
     return response.text
 
 

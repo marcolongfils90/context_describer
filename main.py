@@ -1,6 +1,5 @@
 """Simple binary to test execution."""
 import base64
-from PIL import Image
 from src.context.pipeline import inference_pipeline
 
 
@@ -12,5 +11,5 @@ def encode_image(image_path):
 
 
 FILENAME = "artifacts/images/IMG-20240121-WA0001.jpg"
-description = inference_pipeline.InferencePipeline(Image.open(FILENAME)).predict()
+description = inference_pipeline.InferencePipeline(FILENAME).predict()
 print(description)

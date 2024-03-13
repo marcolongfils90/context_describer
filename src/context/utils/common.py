@@ -1,7 +1,6 @@
 """Module with common functions."""
 import base64
 
-
 def decode_image(imgstring, filename):
     """Decodes image from a base 64 string."""
     imgdata = base64.b64decode(imgstring)
