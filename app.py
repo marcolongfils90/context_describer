@@ -16,8 +16,9 @@ CORS(app)
 class ClientApp:
     """Client App."""
     def __init__(self):
-        self.filename = "inputImage.jpg"
-        self.classifier = inference_pipeline.InferencePipeline(self.filename)
+        self.image = "inputImage.jpg"
+        self.items = {}
+        self.classifier = None
 
 
 @app.route("/", methods=["GET"])
@@ -43,9 +44,16 @@ def train_route():
 def predict_route():
     """Callbacks for the predict button."""
     image = request.json['image']
-    common.decode_image(image, clApp.filename)
+    common.decode_image(image, clApp.image)
+    clApp.classifier = inference_pipeline.InferencePipeline(
+        clApp.image,
+        objects={
+            'Flora': 'left',
+            'Psoti': 'right'
+         }
+    )
     result = clApp.classifier.predict()
-    return [result]
+    return result
 
 
 if __name__ == "__main__":

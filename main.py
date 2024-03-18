@@ -11,5 +11,6 @@ def encode_image(image_path):
 
 
 FILENAME = "artifacts/images/IMG-20240121-WA0001.jpg"
-description = inference_pipeline.InferencePipeline(FILENAME).predict()
+objects = {'Flora': 'left', 'Psoti': 'right'}
+description = inference_pipeline.InferencePipeline(FILENAME, objects).predict()
 print(description)
