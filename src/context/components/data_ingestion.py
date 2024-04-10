@@ -1,8 +1,8 @@
 import gdown
 import os
 import zipfile
-from ml_project import logger
-from ml_project.entity.common_entities import DataIngestionConfig
+from context import logger
+from context.entity.common_entities import DataIngestionConfig
 
 
 class DataIngestion:

@@ -2,7 +2,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from ml_project import logger
+from context import logger
 import json
 from ensure import ensure_annotations
 from box import ConfigBox

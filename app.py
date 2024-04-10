@@ -47,10 +47,6 @@ def predict_route():
     common.decode_image(image, clApp.image)
     clApp.classifier = inference_pipeline.InferencePipeline(
         clApp.image,
-        objects={
-            'Flora': 'left',
-            'Psoti': 'right'
-         }
     )
     result = clApp.classifier.predict()
     return result

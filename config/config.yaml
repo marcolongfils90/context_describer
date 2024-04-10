@@ -6,4 +6,12 @@ data_ingestion:
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 
+create_model:
+  root_dir: artifacts/model
+  untrained_model_path: artifacts/model/untrained_model.pt
+  source_breed_model_url: https://drive.google.com/file/d/1eEd23aJwsIrQ3CmIJagpWbnO2r0iPJEU/view?usp=sharing
 
+train_model:
+  root_dir: artifacts/model
+  trained_model_path: artifacts/model/trained_model.pt
+  breed_model_path: artifacts/model/breed.keras
